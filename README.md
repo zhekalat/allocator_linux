@@ -2,10 +2,15 @@
 Simple memory allocator for Linux.
 
 Implemented functions:
-malloc - libc replacement
-free - libc replacement
-calloc - libc replacement
-realloc - libc replacement
 
-allocator_init - internal function
-defrag - internal function
+malloc - libc replacement for memory allocatoin.
+
+free - libc replacement for memory release.
+
+calloc - libc replacement for array/list memory allocation.
+
+realloc - libc replacement for memory reallocation.
+
+allocator_init - internal function.
+
+defrag - internal function.
