@@ -22,9 +22,7 @@ void merge(Header current)
 	current->size = current->size + current->next->size + sizeof(struct header);
 	current->next = current->next->next;
 	if (current->next)
-	{
 		current->next->last = current;
-	}
 }
 
 void split(Header current, size_t size)
@@ -36,9 +34,7 @@ void split(Header current, size_t size)
 	follow->is_available = 1;
 	follow->memory = follow + 1;
 	if (current->next)
-	{
 		current->next->last = follow;
-	}
 	current->next = follow;
 	current->size = size - sizeof(struct header);
 }
@@ -54,9 +50,7 @@ void *malloc(size_t size)
 		init = 1;
 		start_point = sbrk(MEM_ALIGN(sizeof(struct header)));
 		if (start_point == (void*) -1)
-		{
 			return NULL;
-		}
 		start_point->next = NULL;
 		start_point->last = NULL;
 		start_point->size = 0;
@@ -75,19 +69,16 @@ void *malloc(size_t size)
 	{
 		current = sbrk(total_size);
 		if (current == (void*) -1)
-		{
 			return NULL;
-		}
 		current->next = NULL;
 		current->last = last;
 		current->size = total_size - sizeof(struct header);
 		current->memory = current + 1;
 		last->next = current;
 	} 
-	else if (total_size + sizeof(size_t) < current->size)
-	{
-		split(current, total_size);
-	}
+	else
+		if (total_size + sizeof(size_t) < current->size)
+			split(current, total_size);
 	current->is_available = 0;
 	return current->memory;
 }
