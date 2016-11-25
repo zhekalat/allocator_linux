@@ -11,6 +11,6 @@ calloc - libc replacement for array/list memory allocation.
 
 realloc - libc replacement for memory reallocation.
 
-allocator_init - internal function.
+merge and split - internal functions to avoid defragmentation.
 
 defrag - internal function.
