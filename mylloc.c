@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <errno.h>
 
 #define MEM_ALIGN(x) (x + (sizeof(size_t)-1)) & ~(sizeof(size_t)-1)
 
@@ -42,9 +41,8 @@ void *malloc(size_t size)
 	if (!init)
 	{
 		start_point = sbrk(MEM_ALIGN(sizeof(struct header)));
-        if (start_point == (void*) -1) {
+        if (start_point == (void*) -1)
             return NULL;
-        }
         start_point->next = NULL;
         start_point->last = NULL;
         start_point->size = 0;
