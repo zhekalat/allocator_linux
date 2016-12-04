@@ -10,5 +10,3 @@ free - libc replacement for memory release.
 calloc - libc replacement for array/list memory allocation.
 
 realloc - libc replacement for memory reallocation.
-
-merge and split - internal functions to avoid defragmentation.
